@@ -1,5 +1,6 @@
 html {
   min-width: 320px;
   max-width: 500px;
-  background-color: slategrey;
+  background-color: black;
+  color: white;
 }
