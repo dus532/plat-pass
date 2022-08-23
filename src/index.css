@@ -17,10 +17,13 @@
 }
 
 html {
-  min-width: 320px;
-  max-width: 500px;
   background-color: black;
   color: white;
+}
+
+body {
+  min-width: 320px;
+  max-width: 500px;
 }
 
 * {
@@ -30,10 +33,9 @@ html {
 
 input {
   background: #27272a;
-  height: 46px;
   font-family: Pretendard;
   color: white;
-  padding: 0 14px;
+  padding: 14px 16px;
   outline: none;
   border-radius: 5px;
   transition: 0.25s;
@@ -46,4 +48,19 @@ input:focus {
 
 input:placeholder-shown {
   color: #52525b;
+}
+
+button {
+  background: #27272a;
+  color: white;
+  border-radius: 5px;
+  outline: none !important;
+  transform: scale(1);
+  padding: 16px 20px;
+  transition: 0.35s;
+}
+
+button:active {
+  transform: scale(0.95);
+  transition: 0.35s;
 }

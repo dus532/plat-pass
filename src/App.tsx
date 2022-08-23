@@ -1,22 +1,19 @@
 import { x } from '@xstyled/emotion';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
+import ArrowRight from '@/assets/svgs/ArrowRight';
 import Logo from '@/assets/svgs/Logo';
+import Button from '@/components/molecules/Button';
 import Container from '@/components/molecules/Container';
 import Input from '@/components/molecules/Input';
 
 function App() {
+  const [inputStep, setInputStep] = useState(0);
   const { register, handleSubmit, setFocus } = useForm<{
     name: string;
     phoneNumber: string;
   }>();
-
-  useEffect(() => {
-    setTimeout(() => {
-      setFocus('name');
-    }, 3000);
-  }, []);
 
   function onSumbit(e: any) {
     console.log(e);
@@ -56,27 +53,51 @@ function App() {
       >
         먼저 로그인해주세요.
       </x.div>
-      <Container marginTop="32px">
-        <form onSubmit={handleSubmit(onSumbit)}>
+      <form onSubmit={handleSubmit(onSumbit)}>
+        <Container marginTop="32px">
           <x.div opacity={0} animation="slideIn 1s 2.5s forwards">
             <Input
               register={register('name')}
               label="이름"
               placeholder="이름을 입력하세요"
               marginBottom="24px"
+              onKeyUp={(e) => {
+                if (e.key == 'Enter') {
+                  setFocus('phoneNumber');
+                  setInputStep(1);
+                }
+              }}
             />
           </x.div>
-          <x.div opacity={0} animation="">
+          <x.div
+            opacity={0}
+            animation={inputStep > 0 ? 'slideIn 1s forwards' : ''}
+          >
             <Input
               register={register('phoneNumber')}
               type="number"
               label="전화번호"
               placeholder="숫자만 입력받습니다"
+              onKeyUp={() => {
+                if (inputStep < 2) {
+                  setInputStep(2);
+                }
+              }}
             />
           </x.div>
-          <button>ㅌㄴ</button>
-        </form>
-      </Container>
+        </Container>
+        <Container position="fixed" left="0px" bottom="60px">
+          <Button
+            opacity={0}
+            animation={inputStep > 1 ? 'slideIn 1s forwards' : ''}
+          >
+            <x.div>로그인하여 시작하기</x.div>
+            <x.div>
+              <ArrowRight />
+            </x.div>
+          </Button>
+        </Container>
+      </form>
     </>
   );
 }
