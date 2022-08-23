@@ -10,11 +10,18 @@
     "lint-staged": "lint-staged"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
+    "@xstyled/emotion": "^3.6.0",
+    "minireset.css": "^0.0.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "vite-tsconfig-paths": "^3.5.0"
   },
   "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix"
+    ],
     "./src/**": [
       "prettier --write ."
     ]
@@ -23,6 +30,12 @@
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.26.0",
+    "@typescript-eslint/parser": "^5.26.0",
+    "eslint": "8.18.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.30.0",
     "husky": "^8.0.0",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
