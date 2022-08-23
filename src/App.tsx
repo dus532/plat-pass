@@ -10,6 +10,7 @@ import Input from '@/components/molecules/Input';
 
 function App() {
   const [inputStep, setInputStep] = useState(0);
+  const [text, setText] = useState('');
   const { register, handleSubmit, setFocus } = useForm<{
     name: string;
     phoneNumber: string;
@@ -62,6 +63,7 @@ function App() {
               placeholder="이름을 입력하세요"
               marginBottom="24px"
               onKeyUp={(e) => {
+                setText(e.key);
                 if (e.key == 'Enter') {
                   setFocus('phoneNumber');
                   setInputStep(1);
@@ -69,6 +71,7 @@ function App() {
               }}
             />
           </x.div>
+          {text}
           <x.div
             opacity={0}
             animation={inputStep > 0 ? 'slideIn 1s forwards' : ''}
