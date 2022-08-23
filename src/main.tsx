@@ -1,4 +1,5 @@
 import './index.css';
+import './animation.css';
 import 'minireset.css';
 
 import { defaultTheme, ThemeProvider, Preflight } from '@xstyled/emotion';

@@ -1,0 +1,32 @@
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes spin {
+  from {
+    opacity: 0;
+    rotate: 180deg;
+  }
+  to {
+    opacity: 1;
+    rotate: 360deg;
+  }
+}
+
+@keyframes rotate3D {
+  from {
+    opacity: 0;
+    transform: scale(2) rotate3d(1, 0, 1, 20deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotate3d(0);
+  }
+}
