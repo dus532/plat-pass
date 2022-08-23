@@ -89,7 +89,7 @@ function App() {
         <Container position="fixed" left="0px" bottom="60px">
           <Button
             opacity={0}
-            animation={inputStep > 1 ? 'slideIn 1s forwards' : ''}
+            animation={inputStep > 1 ? 'slideIn 1s 1s forwards' : ''}
           >
             <x.div>로그인하여 시작하기</x.div>
             <x.div>
