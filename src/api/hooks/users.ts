@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { useRecoilState } from 'recoil';
 import { query } from 'thin-backend';
 import { useQuery } from 'thin-backend-react';
@@ -21,20 +22,17 @@ export default function useUserQuery() {
 
   function useSubmitGetUser() {
     const users = useGetUser();
-    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-      setLoading(true);
       if (getUserFilter.name && users && !users.length) {
-        console.log('못찾음', getUserFilter, users);
+        toast.warn('일치하는 정보가 없습니다.');
       }
       if (users && users.length) {
         console.log('찾음', users);
       }
-      setLoading(false);
     }, [users]);
 
-    return { fetch: setUserFilter, isLoading: loading };
+    return { fetch: setUserFilter };
   }
 
   return { useGetUsers, useGetUser, useSubmitGetUser };

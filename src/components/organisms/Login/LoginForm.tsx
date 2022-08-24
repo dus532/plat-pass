@@ -10,7 +10,7 @@ import Input from '@/components/molecules/Input';
 export default function LoginForm() {
   const { useSubmitGetUser } = useUserQuery();
 
-  const { fetch: submitGetUser, isLoading } = useSubmitGetUser();
+  const { fetch: submitGetUser } = useSubmitGetUser();
 
   const {
     register,
@@ -51,9 +51,7 @@ export default function LoginForm() {
         position="absolute"
         top="calc(var(--vh) - 120px)"
       >
-        <Button disabled={!isValid} isLoading={isLoading}>
-          로그인하여 시작하기
-        </Button>
+        <Button disabled={!isValid}>로그인하여 시작하기</Button>
       </Container>
     </form>
   );

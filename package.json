@@ -17,6 +17,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.34.2",
+    "react-toastify": "^9.0.8",
     "recoil": "^0.7.5",
     "thin-backend": "^0.11.0",
     "thin-backend-react": "^0.10.1",
