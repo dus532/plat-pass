@@ -1,5 +1,5 @@
 import { x } from '@xstyled/emotion';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import ArrowRight from '@/assets/svgs/ArrowRight';
@@ -61,11 +61,9 @@ function App() {
               label="이름"
               placeholder="이름을 입력하세요"
               marginBottom="24px"
-              onKeyUp={(e) => {
-                if (e.key == 'Enter') {
-                  setFocus('phoneNumber');
-                  setInputStep(1);
-                }
+              onBlur={() => {
+                setFocus('phoneNumber');
+                setInputStep(1);
               }}
             />
           </x.div>
@@ -78,7 +76,7 @@ function App() {
               type="number"
               label="전화번호"
               placeholder="숫자만 입력받습니다"
-              onKeyUp={() => {
+              onBlur={() => {
                 if (inputStep < 2) {
                   setInputStep(2);
                 }
