@@ -1,34 +1,30 @@
 import { x } from '@xstyled/emotion';
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { Platuser } from 'thin-backend';
 
+import useUserQuery from '@/api/hooks/users';
 import Button from '@/components/molecules/Button';
 import Container from '@/components/molecules/Container';
 import Input from '@/components/molecules/Input';
 
 export default function LoginForm() {
-  const [loading, setLoading] = useState(false);
+  const { useSubmitGetUser } = useUserQuery();
+
+  const { fetch: submitGetUser, isLoading } = useSubmitGetUser();
+
   const {
     register,
     handleSubmit,
     setFocus,
-    formState: { dirtyFields },
-  } = useForm<{
-    name: string;
-    phoneNumber: string;
-  }>();
-
-  function onSumbit(e: any) {
-    setLoading(true);
-    console.log(e);
-  }
+    formState: { dirtyFields, isValid },
+  } = useForm<Platuser>({ mode: 'onChange' });
 
   return (
-    <form onSubmit={handleSubmit(onSumbit)}>
+    <form onSubmit={handleSubmit(submitGetUser)}>
       <Container marginTop="32px">
         <x.div opacity={0} animation="slideIn 1s 2.5s forwards">
           <Input
-            register={register('name')}
+            register={register('name', { required: true, minLength: 2 })}
             label="이름"
             placeholder="이름을 입력하세요"
             marginBottom="24px"
@@ -42,7 +38,7 @@ export default function LoginForm() {
           animation={dirtyFields?.name ? 'slideIn 1s forwards' : ''}
         >
           <Input
-            register={register('phoneNumber')}
+            register={register('phoneNumber', { required: true, minLength: 7 })}
             type="number"
             label="전화번호"
             placeholder="숫자만 입력받습니다"
@@ -55,7 +51,9 @@ export default function LoginForm() {
         position="absolute"
         top="calc(var(--vh) - 120px)"
       >
-        <Button isLoading={loading}>로그인하여 시작하기</Button>
+        <Button disabled={!isValid} isLoading={isLoading}>
+          로그인하여 시작하기
+        </Button>
       </Container>
     </form>
   );

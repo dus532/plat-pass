@@ -17,6 +17,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.34.2",
+    "recoil": "^0.7.5",
+    "thin-backend": "^0.11.0",
+    "thin-backend-react": "^0.10.1",
     "vite-tsconfig-paths": "^3.5.0"
   },
   "lint-staged": {
@@ -28,6 +31,7 @@
   "devDependencies": {
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
+    "@types/thin-backend": "https://thin.dev/types/43cfcf5c-35f8-4d65-8586-6c7b4b51bff3/FjpCPqSckzYuPJGVHjqhlFKeeDxklrbH",
     "@typescript-eslint/eslint-plugin": "^5.26.0",
     "@typescript-eslint/parser": "^5.26.0",
     "@vitejs/plugin-react": "^2.0.1",

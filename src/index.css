@@ -62,7 +62,6 @@ button {
 
 button:disabled {
   background: #27272a;
-  color: #52525b;
 }
 
 :root {

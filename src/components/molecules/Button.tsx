@@ -38,7 +38,12 @@ export default function Button({
         setScale(0.98);
       }}
     >
-      <x.div display="flex" justifyContent="space-between" alignItems="center">
+      <x.div
+        opacity={props?.disabled ? 0.3 : 1}
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+      >
         {children}
         {isLoading ? (
           <x.div animation="rotate 1s linear infinite">
