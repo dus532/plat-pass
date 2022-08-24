@@ -2,7 +2,6 @@ import { x } from '@xstyled/emotion';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import ArrowRight from '@/assets/svgs/ArrowRight';
 import Logo from '@/assets/svgs/Logo';
 import Button from '@/components/molecules/Button';
 import Container from '@/components/molecules/Container';
@@ -62,8 +61,10 @@ function Login() {
               placeholder="이름을 입력하세요"
               marginBottom="24px"
               onBlur={() => {
-                setFocus('phoneNumber');
-                setInputStep(1);
+                if (inputStep < 1) {
+                  setFocus('phoneNumber');
+                  setInputStep(1);
+                }
               }}
             />
           </x.div>
@@ -84,16 +85,13 @@ function Login() {
             />
           </x.div>
         </Container>
-        <Container position="absolute" top="calc(var(--vh) - 120px)">
-          <Button
-            opacity={0}
-            animation={inputStep > 1 ? 'slideIn 1s forwards' : ''}
-          >
-            <x.div>로그인하여 시작하기</x.div>
-            <x.div>
-              <ArrowRight />
-            </x.div>
-          </Button>
+        <Container
+          opacity={0}
+          animation={inputStep > 1 ? 'slideIn 1s forwards' : ''}
+          position="absolute"
+          top="calc(var(--vh) - 120px)"
+        >
+          <Button>로그인하여 시작하기</Button>
         </Container>
       </form>
     </>

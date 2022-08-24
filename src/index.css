@@ -56,14 +56,13 @@ button {
   color: white;
   border-radius: 5px;
   outline: none !important;
-  transform: scale(1);
   padding: 16px 20px;
   transition: 0.35s;
 }
 
-button:focus {
-  transform: scale(0.95);
-  transition: 0.35s;
+button:disabled {
+  background: #27272a;
+  color: #52525b;
 }
 
 :root {
