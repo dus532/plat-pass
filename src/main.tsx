@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { defaultTheme, ThemeProvider, Preflight } from '@xstyled/emotion';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { RecoilRoot } from 'recoil';
 import { initThinBackend } from 'thin-backend';
@@ -22,13 +23,15 @@ const theme = {
 };
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <ThinBackend>
-    <RecoilRoot>
-      <ThemeProvider theme={theme}>
-        <Preflight />
-        <App />
-      </ThemeProvider>
-    </RecoilRoot>
-    <ToastContainer theme="dark" position="top-center" />
-  </ThinBackend>,
+  <BrowserRouter>
+    <ThinBackend>
+      <RecoilRoot>
+        <ThemeProvider theme={theme}>
+          <Preflight />
+          <App />
+        </ThemeProvider>
+      </RecoilRoot>
+      <ToastContainer theme="dark" position="top-center" />
+    </ThinBackend>
+  </BrowserRouter>,
 );
